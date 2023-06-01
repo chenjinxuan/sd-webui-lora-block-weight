@@ -246,7 +246,6 @@ class Script(modules.scripts.Script):
         return lbw_loraratios,lbw_useblocks,xyzsetting,xtype,xmen,ytype,ymen,ztype,zmen,exmen,eymen,ecount,diffcol,thresh,revxy,elemental,elemsets
 
     def process(self, p, loraratios,useblocks,xyzsetting,xtype,xmen,ytype,ymen,ztype,zmen,exmen,eymen,ecount,diffcol,thresh,revxy,elemental,elemsets):
-        print("===============")
         #print("self =",self,"p =",p,"presets =",loraratios,"useblocks =",useblocks,"xyzsettings =",xyzsetting,"xtype =",xtype,"xmen =",xmen,"ytype =",ytype,"ymen =",ymen,"ztype =",ztype,"zmen =",zmen)
         #Note that this does not use the default arg syntax because the default args are supposed to be at the end of the function
         if(loraratios == None):
@@ -287,17 +286,13 @@ class Script(modules.scripts.Script):
             prompts = kwargs["prompts"].copy()
 
     def process_batch(self, p, loraratios,useblocks,xyzsetting,xtype,xmen,ytype,ymen,ztype,zmen,exmen,eymen,ecount,diffcol,thresh,revxy,elemental,elemsets,**kwargs):
-        print("1111111111111")
         if(useblocks == None):
             useblocks = True
-        print(useblocks)
-        print("8888888")
         if useblocks:
             o_prompts = [p.prompt]
             for prompt in prompts:
                 if "<lora" in prompt or "<lyco" in prompt:
                     o_prompts = prompts.copy()
-                print("ddddddd")
             loradealer(o_prompts ,self.lratios,self.elementals)
 
     def postprocess(self, p, processed, *args):
@@ -308,7 +303,6 @@ class Script(modules.scripts.Script):
         gc.collect()
 
     def run(self,p,presets,useblocks,xyzsetting,xtype,xmen,ytype,ymen,ztype,zmen,exmen,eymen,ecount,diffcol,thresh,revxy,elemental,elemsets):
-        print("333333333333")
         if xyzsetting >0:
             import lora
             loraratios=presets.splitlines()
@@ -484,7 +478,6 @@ def lycodealer(called):
     return called
 
 def loradealer(prompts,lratios,elementals):
-    print("444444444444")
     _, extra_network_data = extra_networks.parse_prompts(prompts)
     moduletypes = extra_network_data.keys()
 
