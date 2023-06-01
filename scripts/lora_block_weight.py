@@ -288,15 +288,17 @@ class Script(modules.scripts.Script):
 
     def process_batch(self, p, loraratios,useblocks,xyzsetting,xtype,xmen,ytype,ymen,ztype,zmen,exmen,eymen,ecount,diffcol,thresh,revxy,elemental,elemsets,**kwargs):
         print("1111111111111")
+        print(useblocks)
+        print("8888888")
         if useblocks:
             o_prompts = [p.prompt]
             for prompt in prompts:
                 if "<lora" in prompt or "<lyco" in prompt:
                     o_prompts = prompts.copy()
+                print("ddddddd")
             loradealer(o_prompts ,self.lratios,self.elementals)
 
     def postprocess(self, p, processed, *args):
-        print("22222222222")
         import lora
         lora.loaded_loras.clear()
         global lxyz,lzyx,xyelem             
