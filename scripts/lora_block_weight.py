@@ -288,6 +288,8 @@ class Script(modules.scripts.Script):
 
     def process_batch(self, p, loraratios,useblocks,xyzsetting,xtype,xmen,ytype,ymen,ztype,zmen,exmen,eymen,ecount,diffcol,thresh,revxy,elemental,elemsets,**kwargs):
         print("1111111111111")
+        if(useblocks == None):
+            useblocks = True
         print(useblocks)
         print("8888888")
         if useblocks:
